@@ -14,7 +14,7 @@
 
 为了更方便小伙伴的复习和查询，把本仓库做成一个在线的文档
 
-- 在线文档：http://moxi159753.gitee.io/learningnotes
+- 在线文档： blankwhiter.github.io
 
 ## Java
 
@@ -340,13 +340,5 @@
 - [goroutine实现并行和并发](./Golang/Golang基础/15_goroutine实现并行和并发/README.md)
 - [Golang中的反射](./Golang/Golang基础/16_Golang中的反射/README.md)
 - [源码](./Golang/Golang基础/Code)
-
-
-## 赞赏
-
-如果觉得本仓库对您有帮助的话，希望朋友能够给博主喝一杯咖啡（ps.. 小伙伴赞赏的时候可以备注一下下~）
-
-|                       微信                       |                      支付宝                       |
-| :----------------------------------------------: | :-----------------------------------------------: |
-| <img src="./doc/images/qq/wx.png" width="200" /> | <img src="./doc/images/qq/zfb.png" width="200" /> |
+ 
 
