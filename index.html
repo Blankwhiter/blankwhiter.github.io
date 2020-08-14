@@ -40,6 +40,20 @@
 <script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-java.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+ <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+ <script>
+   var title = location.pathname.substr(0, 50);
+   const gitalk = new Gitalk({
+   clientID: '9128a36b307daf77bbd6',
+   clientSecret: '4530b3030c030b71e3b4c35115ac27de8ac59d56',
+   repo: 'blankwhiter.github.io',
+   owner: 'Blankwhiter',
+   admin: ['Blankwhiter'],
+   language:'zh-CN',
+   id:title,
+   })
 
+ </script>
 </body>
 </html>
