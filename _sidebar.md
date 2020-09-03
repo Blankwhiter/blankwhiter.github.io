@@ -298,6 +298,7 @@
   - [docker简易搭建Zookeeper集群](./Docker/实战/docker简易搭建Zookeeper集群/README.md)
   - [docker简易搭建kafka](./Docker/实战/docker简易搭建kafka/README.md)
   - [docker简易搭建nginx日志分析环境--goaccess](./Docker/实战/docker简易搭建nginx日志分析环境--goaccess/README.md)
+  - [docker简易实现Rabbitmq延迟队列](./Docker/实战/docker简易实现Rabbitmq延迟队列/README.md)
 
 - **IDEA**
   - [IDEA 插件收集](./IDEA/常用/IDEA插件收集/README.md)
