@@ -9,6 +9,7 @@
   - [JDK动态代理和CGLIB动态代理](./校招面试/基础面试题/5_JDK动态代理和CGLIB动态代理/README.md)
   - [动态代理](./Java/动态代理/README.md)
   - [泛型](./Java/泛型/README.md)
+  - [序列化](./Java/序列化/README.md)
   - [java安全管理器](./Java/java安全管理器/README.md)
   - [Java注解和反射](./Java/Java注解和反射/README.md)
   - [泛型的类型擦除](./Java/泛型的类型擦除/README.md)
@@ -21,6 +22,8 @@
   - [谈谈你对ThreadLocal的理解](./Java/谈谈你对ThreadLocal的理解/README.md)
   - [谈谈你对AQS的理解](./Java/谈谈你对AQS的理解/README.md)
   - [ArrayList扩容机制](./Java/ArrayList扩容机制/README.md)
+  - [snowflake算法生成唯一id](./Java/snowflake算法生成唯一id/README.md)
+  - [JWT](./Java/JWT/README.md)
 
 -  **Java8新特性**
   - [HashMap变化](./校招面试/Java8新特性/1_HashMap变化/README.md)
@@ -233,7 +236,13 @@
   - [OCR文字识别软件](./杂记/OCR文字识别软件/README.md)
 - **Linux**
   - [Linux下查看文件和文件夹占用空间大小](./Linux/Linux下查看文件和文件夹占用空间大小/README.md)
+  - [Linux下通过nginx配置https](./Linux/Linux下通过nginx配置https/README.md)
   - [记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历/README.md)
+  - [Shell常用指令](./Linux/Shell常用指令/README.md)
+
+- **Maven**
+  - [maven依赖](./Maven/maven依赖/README.md)
+
 
 - **Redis**
   - [Redis中的数据结构](./Redis/Redis中的数据结构/README.md)
@@ -248,6 +257,7 @@
   - [MyBatis常见面试题](./数据库/MyBatis常见面试题/README.md)
   - [MyBatis的缓存机制](./数据库/MyBatis的缓存机制/README.md)
   - [MySQL索引](./数据库/MySQL索引/README.md)
+  - [Mongodb简易使用](./数据库/Mongodb简易使用/README.md)
 - **操作系统**
   - [进程和线程通信](./操作系统/1_进程和线程通信/README.md)
 - **计算机网络**
