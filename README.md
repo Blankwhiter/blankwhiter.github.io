@@ -42,6 +42,8 @@
 - [ArrayList扩容机制](./Java/ArrayList扩容机制/README.md)
 - [snowflake算法生成唯一id](./Java/snowflake算法生成唯一id/README.md)
 - [JWT](./Java/JWT/README.md)
+- [HashMap-1.7](./Java/HashMap-1.7/README.md)
+
 
 ## Java8新特性
 

@@ -11,6 +11,9 @@
 
 # 一. 首先为什么会有序列化  
 序列化的原本意图是希望对一个Java对象作一下“变换”，变成字节序列，这样一来方便`持久化存储`到磁盘，避免程序运行结束后对象就从内存里消失，另外变换成字节序列也更便于`网络运输和传播`.
+![作用](images/image-202010130902001.png)
+而且序列化机制从某种意义上来说也弥补了平台化的一些差异，毕竟转换后的字节流可以在其他平台上进行反序列化来恢复对象.
+
 
 #### 作用总结（可理解为什么时候需要序列化）： ✔
 - （1）永久性保存对象，保存对象的字节序列到本地文件或者数据库中；
@@ -70,7 +73,7 @@
 	`ObjectOutputStream`采用默认的序列化方式，对User对象的非`transient`的实例变量进行序列化。
 	`ObjcetInputStream`采用默认的反序列化方式，对对User对象的非`transient`的实例变量进行反序列化。
 
-- （2）若User类仅仅实现了`Serializable`接口，并且还定义了`readObject(ObjectInputStream in)`和w`riteObject(ObjectOutputSteam out)`，则采用以下方式进行序列化与反序列化。
+- （2）若User类仅仅实现了`Serializable`接口，并且还定义了`readObject(ObjectInputStream in)`和`writeObject(ObjectOutputSteam out)`，则采用以下方式进行序列化与反序列化。
 
 	`ObjectOutputStream`调用User对象的`writeObject(ObjectOutputStream out)`的方法进行序列化。
 	`ObjectInputStream`会调用User对象的`readObject(ObjectInputStream in)`的方法进行反序列化。
@@ -247,6 +250,7 @@ Serializable writeObject
 Serializable readObject
 write name : hbl read  title.jng null write address : 福州 read 
 ```
+注：序列化和反序列化的过程其实是有漏洞的，因为从序列化到反序列化是有中间过程的，如果被别人拿到了中间字节流，然后加以伪造或者篡改，那反序列化出来的对象就会有一定风险了。 但是通过自行编写readObject()函数，用于对象的反序列化构造，从而提供约束性。
 
 
 
