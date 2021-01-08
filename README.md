@@ -64,6 +64,7 @@
 
 ## JVM
 
+
 > 来源Bilibili尚硅谷宋红康老师JVM教程：[硅谷2020最新版宋红康JVM教程](https://www.bilibili.com/video/BV1PJ411n7xZ)
 
 - [JVM与Java体系结构](JVM/1_内存与垃圾回收篇/1_JVM与Java体系结构/README.md)
@@ -85,6 +86,8 @@
 - [垃圾回收器](./JVM/1_内存与垃圾回收篇/17_垃圾回收器/README.md)
 
 ## JUC
+
+- [java并发](./Java/java并发/README.md)
 
 >来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷Java大厂面试题第二季](https://www.bilibili.com/video/BV18b411M7xz)
 
@@ -224,6 +227,8 @@
 - [使用DevTool实现SpringBoot项目热部署](./SpringBoot/使用DevTool实现SpringBoot项目热部署/README.md)
 - [使用自定义日志接口收集用户访问日志](./SpringBoot/使用自定义日志接口收集用户访问日志/README.md)
 - [Bean的生命周期](./SpringBoot/Bean的生命周期/README.md)
+- [Springboot集成minio对象存储服务](./SpringBoot/Springboot集成minio对象存储服务/README.md)
+- [Springboot简易使用actuator健康监控工具](./SpringBoot/Springboot简易使用actuator健康监控工具/README.md)
 
 ## Vue
 

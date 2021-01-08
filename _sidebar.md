@@ -61,6 +61,8 @@
   - [垃圾回收器](./JVM/1_内存与垃圾回收篇/17_垃圾回收器/README.md)
 
 - **JUC**
+
+  - [java并发](./Java/java并发/README.md)
   - [Volatile和JMM内存模型的可见性](./校招面试/JUC/1_谈谈Volatile/1_Volatile和JMM内存模型的可见性/README.md)
   - [Volatile不保证原子性](./校招面试/JUC/1_谈谈Volatile/2_Volatile不保证原子性/README.md)
   - [Volatile禁止指令重排](./校招面试/JUC/1_谈谈Volatile/3_Volatile禁止指令重排/README.md)
@@ -185,6 +187,10 @@
   - [使用DevTool实现SpringBoot项目热部署](./SpringBoot/使用DevTool实现SpringBoot项目热部署/README.md)
   - [使用自定义日志接口收集用户访问日志](./SpringBoot/使用自定义日志接口收集用户访问日志/README.md)
   - [Bean的生命周期](./SpringBoot/Bean的生命周期/README.md)
+  - [Springboot集成minio对象存储服务](./SpringBoot/Springboot集成minio对象存储服务/README.md)
+  - [Springboot简易使用actuator健康监控工具](./SpringBoot/Springboot简易使用actuator健康监控工具/README.md)
+
+  
 - **Vue**
   - [Axios中拦截器的使用](./Vue/Axios中拦截器的使用/README.md)
   - [ElementUI中Upload如何批量上传](./Vue/ElementUI中Upload如何批量上传/README.md)
