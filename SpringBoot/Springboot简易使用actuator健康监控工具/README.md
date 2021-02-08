@@ -1,4 +1,4 @@
-
+# Springboot简易使用actuator健康监控工具
 
 写在前面：本次采用的springboot的版本是2.X
 
@@ -144,7 +144,7 @@ http://localhost:8000/actuator/metrics/{MetricName}
 
 
 # 第四步使用Spring Security来保证Actuator Endpoints安全 
-Actuator endpoints是敏感的，必须保障进入是被授权的。如果Spring Security是包含在你的应用中，那么endpoint是通过HTTP认证被保护起来的。
+1.Actuator endpoints是敏感的，必须保障进入是被授权的。如果Spring Security是包含在你的应用中，那么endpoint是通过HTTP认证被保护起来的。
 ```
 <dependency>
    <groupId>org.springframework.boot</groupId>
@@ -152,7 +152,7 @@ Actuator endpoints是敏感的，必须保障进入是被授权的。如果Sprin
 </dependency>
 ```
 
-在application.yaml中增加spring security用户 就使用这里配置的用户名/密码登录
+2.在application.yaml中增加spring security用户 就使用这里配置的用户名/密码登录
 ```
 spring:
   security:
@@ -162,7 +162,7 @@ spring:
       roles: ACTUATOR_ADMIN
 ```
 
-编写安全认证ActuatorSecurityConfig配置类
+3.编写安全认证ActuatorSecurityConfig配置类
 ```
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.actuate.context.ShutdownEndpoint;
@@ -197,7 +197,7 @@ public class ActuatorSecurityConfig extends WebSecurityConfigurerAdapter {
 
 ```
 
-使用Postman请求，填上认证信息
+4.使用Postman请求，填上认证信息
 ![](images/image-2021010180929004.png)
 
 注：Spring Security 支持两种不同的认证方式：
@@ -205,7 +205,101 @@ public class ActuatorSecurityConfig extends WebSecurityConfigurerAdapter {
 - 可以通过 HttpBasic 来认证
 
 
-将不一一进行演示，下表列出常用命令：
+
+# 第五步 Prometheus
+
+Prometheus是一个开源的监控系统，起源于SoundCloud。它由以下几个核心组件构成：
+
+- 数据爬虫：根据配置的时间定期的通过HTTP抓去metrics数据。
+- time-series 数据库：存储所有的metrics数据。
+- 简单的用户交互接口：可视化、查询和监控所有的metrics。
+
+
+1.加Micrometer Prometheus Registry到你的Spring Boot应用
+Spring Boot使用Micrometer，一个应用metrics组件，将actuator metrics整合到外部监控系统中。
+
+它支持很多种监控系统，比如Netflix Atalas, AWS Cloudwatch, Datadog, InfluxData, SignalFx, Graphite, Wavefront和Prometheus等。
+
+为了整合Prometheus，你需要增加micrometer-registry-prometheus依赖：
+```
+<!-- Micrometer Prometheus registry  -->
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+```
+
+一旦你增加上述的依赖，Spring Boot会自动配置一个PrometheusMeterRegistry和CollectorRegistry来收集和输出格式化的metrics数据，使得Prometheus服务器可以爬取。
+
+所有应用的metrics数据是根据一个叫/prometheus的endpoint来设置是否可用。Prometheus服务器可以周期性的爬取这个endpoint来获取metrics数据。
+2.解析Spring Boot Actuator的/prometheus Endpoint
+首先，你可以通过actuator endpoint-discovery页面(http://192.168.0.41:8000/actuator)来看一下prometheus endpoint。
+```
+"prometheus": {
+"href": "http://192.168.0.41:8000/actuator/prometheus",
+"templated": false
+}
+```
+prometheus endpoint暴露了格式化的metrics数据给Prometheus服务器。你可以通过prometheus endpoint(`http://192.168.0.41:8000/actuator/prometheus`)看到被暴露的metrics数据
+
+ 
+
+
+3.Prometheus配置(prometheus.yml)
+我们需要配置Prometheus来抓取Spring Boot Actuator的/prometheus endpoint中的metrics数据。
+
+创建一个prometheus.yml的文件吗，内容如下：
+```
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+    - targets: ['127.0.0.1:9090']
+
+  - job_name: 'spring-actuator'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['192.168.0.41:8000']
+```
+注： metrics_path是Actuator中prometheus endpoint中的路径。targes包含了Spring Boot应用的HOST和PORT。
+
+4.启动Prometheus容器
+```
+docker run -d --name=prometheus -p 9090:9090 -v  /home/software/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
+```
+
+
+5.在Prometheus仪表盘中可视化Spring Boot Metrics
+通过访问`http://容器所在服务器ip:9090`访问Prometheus仪表盘。你可以通过Prometheus查询表达式来查询metrics。
+
+# 第六步 Grafana
+1.运行Grafana容器
+```
+docker run -d --name=grafana -p 3000:3000 grafana/grafana 
+```
+访问`http:///容器所在服务器ip:3000`，并且使用默认的账户名(admin)密码(admin)来登录Grafana。
+
+2.构建仪表盘
+
+
+# 附录：
+表格中不一一进行演示，下表列出常用命令：
 
 <table><thead><tr><th>HTTP方法</th>
 			<th>路径</th>

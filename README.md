@@ -229,6 +229,8 @@
 - [Bean的生命周期](./SpringBoot/Bean的生命周期/README.md)
 - [Springboot集成minio对象存储服务](./SpringBoot/Springboot集成minio对象存储服务/README.md)
 - [Springboot简易使用actuator健康监控工具](./SpringBoot/Springboot简易使用actuator健康监控工具/README.md)
+- [Springboot集成cache与redis做缓存](./SpringBoot/Springboot集成cache与redis做缓存/README.md)
+- [Springboot结合redis幂等性接口验证](./SpringBoot/Springboot结合redis幂等性接口验证/README.md) 
 
 ## Vue
 
@@ -380,6 +382,7 @@
   - [docker简易搭建kafka](./Docker/实战/docker简易搭建kafka/README.md)
   - [docker简易搭建nginx日志分析环境--goaccess](./Docker/实战/docker简易搭建nginx日志分析环境--goaccess/README.md)
   - [docker简易实现Rabbitmq延迟队列](./Docker/实战/docker简易实现Rabbitmq延迟队列/README.md)
+  - [docker搭建canal](./Docker/实战/docker搭建canal/README.md)
 
 ## IDEA
 
