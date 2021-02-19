@@ -324,6 +324,7 @@
   - [docker简易搭建nginx日志分析环境--goaccess](./Docker/实战/docker简易搭建nginx日志分析环境--goaccess/README.md)
   - [docker简易实现Rabbitmq延迟队列](./Docker/实战/docker简易实现Rabbitmq延迟队列/README.md)
   - [docker搭建canal](./Docker/实战/docker搭建canal/README.md)
-  
+  - [docker简易搭建Rocketmq](./Docker/实战/docker简易搭建Rocketmq/README.md)  
+
 - **IDEA**
   - [IDEA 插件收集](./IDEA/常用/IDEA插件收集/README.md)
