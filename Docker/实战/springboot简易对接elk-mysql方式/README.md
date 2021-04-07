@@ -1,7 +1,7 @@
 
 # springboot简易对接elk-mysql方法
 
-# 一、lasticsearch单例环境准备
+# 一、elasticsearch单例环境准备
 
 ### 1.1 在centos中 创建对应映射目录 /home/software/elasticsearch/data,以及编写/home/software/elasticsearch/config/下es-single.yml，内容如下
 ```xml
@@ -13,7 +13,11 @@ http.cors.allow-origin: "*"
 ### 1.2 在centos中 执行如下命令搭建elasticsearch单例实例
 ```bash
  chmod 777 /home/software/elasticsearch/data
- docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9210:9200 -p 9310:9300  -e "discovery.type=single-node" -v /home/software/elasticsearch/data:/usr/share/elasticsearch/data -v /home/software/elasticsearch/config/es-single.yml:/usr/share/elasticsearch/config/elasticsearch.yml --name es-single elasticsearch:7.9.3
+ docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9210:9200 -p 9310:9300  -e "discovery.type=single-node"
+  -v /home/software/elasticsearch/data:/usr/share/elasticsearch/data 
+  -v /home/software/elasticsearch/plugin:/usr/share/elasticsearch/plugin
+  -v /home/software/elasticsearch/config/es-single.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  --name es-single elasticsearch:7.9.3
 ```
 
 # 二、logstash环境准备
